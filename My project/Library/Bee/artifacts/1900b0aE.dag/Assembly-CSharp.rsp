@@ -346,6 +346,8 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/scripts/Ai.cs"
+"Assets/scripts/ChargeAi.cs"
+"Assets/scripts/ChargePoint.cs"
 "Assets/scripts/RandomMovement.cs"
 "Assets/scripts/RandomSpawner.cs"
 "Assets/scripts/seedspawner.cs"
