@@ -7,26 +7,13 @@ public class ChargeAi : MonoBehaviour
 {
     public NavMeshAgent agent;
     public Transform player;
-    public LayerMask whatIsPlayer;
-
-
     public Transform centrePoint;
-
-
+    public LayerMask whatIsPlayer;
     public Vector3 chargepoint;
-    public Vector3 walkPoint;
-    bool walkPointSet;
-    public float range;
-
-    public float timeBetweenAttacks;
-    bool alreadyAttacked;
     public GameObject projectile;
+    public float sightRange, chargeRange, timeBetweenAttacks;
+    public bool playerInSightRange, playerInAttackRange, isinwall, charging;
 
-    public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange;
-
-    public bool isinwall;
-    public bool charging;
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
@@ -39,7 +26,7 @@ public class ChargeAi : MonoBehaviour
         {
             //플레이어 관측하고 공격하기
             playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
-            playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
+            playerInAttackRange = Physics.CheckSphere(transform.position, chargeRange, whatIsPlayer);
             if (!playerInSightRange && !playerInAttackRange)
             {
                 Patorling();
@@ -61,29 +48,27 @@ public class ChargeAi : MonoBehaviour
 
     private void Patorling()
     {
-        if (agent.remainingDistance <= agent.stoppingDistance)
+        if (agent.remainingDistance <= agent.stoppingDistance)//목적지 도착 확인
         {
             SearchWalkPoint();
         }
     }
-    private void SearchWalkPoint()
+    private void SearchWalkPoint() //랜덤 위치 생성
     {
         Vector3 point;
-        if (RandomPoint(centrePoint.position, range, out point)) //pass in our centre point and radius of area
+        if (RandomPoint(centrePoint.position, sightRange, out point))
         {
-            Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f); //so you can see with gizmos
+            Debug.DrawRay(point, Vector3.up, Color.blue, 1.0f);
             agent.SetDestination(point);
         }
     }
-    bool RandomPoint(Vector3 center, float range, out Vector3 result)
+    bool RandomPoint(Vector3 center, float range, out Vector3 result) //랜덤 위치 생성
     {
 
-        Vector3 randomPoint = center + Random.insideUnitSphere * range; //random point in a sphere 
+        Vector3 randomPoint = center + Random.insideUnitSphere * range;
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas)) //documentation: https://docs.unity3d.com/ScriptReference/AI.NavMesh.SamplePosition.html
+        if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
         {
-            //the 1.0f is the max distance from the random point to a point on the navmesh, might want to increase if range is big
-            //or add a for loop like in the documentation
             result = hit.position;
             return true;
         }
@@ -99,28 +84,28 @@ public class ChargeAi : MonoBehaviour
     {
         transform.LookAt(player);
 
-        if (!alreadyAttacked)
+        if (!charging)
         {
             //공격 모션
             Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * 10000f);
-            alreadyAttacked = true;
-
         }
     }
     private void ChargePlayer()
     {
         charging = true;
         agent.SetDestination(chargepoint);
+        agent.speed = 10f;
         if(agent.remainingDistance <= agent.stoppingDistance)
         {
-            Invoke(nameof(ResetAttack), timeBetweenAttacks);
+            Invoke(nameof(ResetCharge), timeBetweenAttacks);
         }
 
     }
-    private void ResetAttack()
+    private void ResetCharge()
     {
-        alreadyAttacked = false;
         charging = false;
+        isinwall = false;
+        agent.speed = 3.5f;
     }
 }

@@ -1212,17 +1212,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 732005832}
   player: {fileID: 1884127308}
+  centrePoint: {fileID: 732005837}
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 128
-  centrePoint: {fileID: 732005837}
   chargepoint: {x: 0, y: 0, z: 0}
-  walkPoint: {x: 0, y: 0, z: 0}
-  range: 5
-  timeBetweenAttacks: 100
   projectile: {fileID: 3588886737383696941, guid: b2d568ed1aba01147ad1ec6cb8d66d35, type: 3}
-  sightRange: 5
-  attackRange: 3
+  sightRange: 20
+  chargeRange: 10
+  timeBetweenAttacks: 0
   playerInSightRange: 0
   playerInAttackRange: 0
   isinwall: 0
