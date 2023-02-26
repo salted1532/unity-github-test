@@ -16,7 +16,7 @@ public class seedspawner : MonoBehaviour
     void Start()
     {
         //aaa = new Mobs(1, 6);
-        enemyinfo.Add(new List<Mobs> { new Mobs(1,2), new Mobs(1, 4) ,new Mobs(1, 9) });
+        enemyinfo.Add(new List<Mobs> { new Mobs(1, 2), new Mobs(1, 4) ,new Mobs(1, 9) });
         enemyinfo.Add(new List<Mobs> { new Mobs(2, 3), new Mobs(2, 7) });
         enemyinfo.Add(new List<Mobs> { new Mobs(3, 5) });
 

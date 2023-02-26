@@ -88,12 +88,12 @@ public class ChargeAi : MonoBehaviour
         {
             //공격 모션
             Rigidbody rb = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * 10000f);
+            rb.AddForce(transform.forward * 1000f);
+            charging = true;
         }
     }
     private void ChargePlayer()
     {
-        charging = true;
         agent.SetDestination(chargepoint);
         agent.speed = 10f;
         if(agent.remainingDistance <= agent.stoppingDistance)
