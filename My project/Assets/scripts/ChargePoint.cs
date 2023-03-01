@@ -29,7 +29,7 @@ public class ChargePoint : MonoBehaviour
             chargeai.chargepoint = new Vector3(myposition.position.x, myposition.position.y, myposition.position.z);
             Debug.Log("º®¹ÚÇÔ");
             rb.isKinematic = true;
-            //Destroy(gameObject, .5f);
+            Destroy(gameObject, .5f);
         }
     }
 }

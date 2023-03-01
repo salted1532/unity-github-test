@@ -20,10 +20,29 @@ public class Ai : MonoBehaviour
     public float sightRange, attackRange;
     public bool playerInSightRange, playerInAttackRange;
 
+    seedspawner seedspawn;
+
+    private int health = 1;
+    public bool iamdie = false;
+    public float healthdelay;
+
+    public int Health
+    {
+        get { return health; }
+        set {
+            health = value;
+            if(health <= 0) 
+            { 
+                Die(); 
+            } 
+        }
+    }
+
     private void Awake()
     {
         player = GameObject.Find("Player").transform;
         agent = GetComponent<NavMeshAgent>();
+        seedspawn = GameObject.Find("seedspawnerobject").GetComponent<seedspawner>();
     }
 
     private void Update()
@@ -43,6 +62,16 @@ public class Ai : MonoBehaviour
         if (playerInSightRange && playerInAttackRange)
         {
             AttackPlayer();
+        }
+        if (iamdie == true)
+        {
+            healthdelay -= Time.deltaTime;
+            if (healthdelay <= 0)
+            {
+                Debug.Log("Á×À½");
+                Health -= 1;
+                iamdie = false;
+            }
         }
     }
 
@@ -104,4 +133,17 @@ public class Ai : MonoBehaviour
     {
         alreadyAttacked = false;
     }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            iamdie = true;
+        }
+    }
+    private void Die()
+    {
+        Destroy(gameObject);
+        seedspawn.enemyrate -= 1;
+    }
+
 }

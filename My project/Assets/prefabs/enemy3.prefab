@@ -128,6 +128,8 @@ MonoBehaviour:
   attackRange: 3
   playerInSightRange: 0
   playerInAttackRange: 0
+  iamdie: 0
+  healthdelay: 0.1
 --- !u!195 &962890287212811884
 NavMeshAgent:
   m_ObjectHideFlags: 0

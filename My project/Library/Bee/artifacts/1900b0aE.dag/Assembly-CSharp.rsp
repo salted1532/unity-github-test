@@ -348,6 +348,7 @@
 "Assets/scripts/Ai.cs"
 "Assets/scripts/ChargeAi.cs"
 "Assets/scripts/ChargePoint.cs"
+"Assets/scripts/Player.cs"
 "Assets/scripts/RandomMovement.cs"
 "Assets/scripts/RandomSpawner.cs"
 "Assets/scripts/seedspawner.cs"
