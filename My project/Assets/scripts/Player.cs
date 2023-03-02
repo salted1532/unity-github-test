@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
 
     private CharacterController controller; // 캐릭터 컨트롤러 컴포넌트
 
+    public int Health;
+
     void Start()
     {
         controller = GetComponent<CharacterController>(); // 캐릭터 컨트롤러 컴포넌트 할당
@@ -38,5 +40,10 @@ public class Player : MonoBehaviour
 
         // 캐릭터 이동
         controller.Move(moveDirection * Time.deltaTime);
+    }
+
+    public void TakeDamage()
+    {
+
     }
 }
