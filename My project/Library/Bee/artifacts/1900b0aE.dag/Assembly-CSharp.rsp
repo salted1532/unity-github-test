@@ -345,16 +345,16 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
-"Assets/scripts/Ai.cs"
 "Assets/scripts/attackai.cs"
 "Assets/scripts/ChargeAi.cs"
 "Assets/scripts/ChargePoint.cs"
+"Assets/scripts/EnemyAi.cs"
+"Assets/scripts/EnemyHealth.cs"
+"Assets/scripts/NotUse/RandomMovement.cs"
+"Assets/scripts/NotUse/RandomSpawner.cs"
+"Assets/scripts/NotUse/wavespawner.cs"
 "Assets/scripts/Player.cs"
-"Assets/scripts/RandomMovement.cs"
-"Assets/scripts/RandomSpawner.cs"
 "Assets/scripts/seedspawner.cs"
-"Assets/scripts/test.cs"
-"Assets/scripts/wavespawner.cs"
 -langversion:9.0
 
 /deterministic
