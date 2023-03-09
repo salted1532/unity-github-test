@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class wavespawner : MonoBehaviour
 {
-    public List<Enemy> enemies = new List<Enemy>();
+    public List<Monster> enemies = new List<Monster>();
     public int currWave;
     public int waveValue;
     public List<GameObject> enemiesToSpawn = new List<GameObject>();
@@ -104,7 +104,7 @@ public class wavespawner : MonoBehaviour
 }
 
 [System.Serializable]
-public class Enemy
+public class Monster
 {
     public GameObject enemyPrefab;
     public int cost;

@@ -1565,7 +1565,7 @@ GameObject:
   - component: {fileID: 748457771}
   - component: {fileID: 748457770}
   - component: {fileID: 748457777}
-  - component: {fileID: 748457776}
+  - component: {fileID: 748457778}
   - component: {fileID: 748457775}
   - component: {fileID: 748457774}
   m_Layer: 0
@@ -1668,7 +1668,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 16
   m_CollisionDetection: 0
 --- !u!195 &748457775
 NavMeshAgent:
@@ -1692,21 +1692,6 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &748457776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 748457769}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a6088a45f1daa84fa42d49a08cf3d0b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 748457775}
-  range: 5
-  centrePoint: {fileID: 748457773}
 --- !u!114 &748457777
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1725,6 +1710,37 @@ MonoBehaviour:
   Hpslider: {fileID: 1292031258}
   anim: {fileID: 0}
   dead: 0
+--- !u!114 &748457778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 748457769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a79359c018349d4eb89345d9200366e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 748457775}
+  player: {fileID: 1884127308}
+  whatIsGround:
+    serializedVersion: 2
+    m_Bits: 64
+  whatIsPlayer:
+    serializedVersion: 2
+    m_Bits: 128
+  centrePoint: {fileID: 748457773}
+  walkPoint: {x: 0, y: 0, z: 0}
+  walkPointRange: 20
+  timeBetweenAttacks: 3
+  projectile: {fileID: 4988447895061067869, guid: 719740e898477f741ad4a9ffd91af832, type: 3}
+  sightRange: 20
+  attackRange: 15
+  playerInSightRange: 0
+  playerInAttackRange: 0
+  GetAttack: 0
+  healthdelay: 0.1
 --- !u!1 &765831821
 GameObject:
   m_ObjectHideFlags: 0
@@ -3030,7 +3046,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1884127304}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1
@@ -3112,9 +3128,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 550616a052a950b489ae1015d8c66a62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 6
+  moveSpeed: 12
   jumpSpeed: 8
   gravity: 20
+  PDamge: 10
   Health: 0
 --- !u!143 &1884127310
 CharacterController:

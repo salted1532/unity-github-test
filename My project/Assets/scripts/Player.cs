@@ -8,6 +8,8 @@ public class Player : MonoBehaviour
     public float jumpSpeed = 8.0f; // 점프 속도
     public float gravity = 20.0f; // 중력 가속도
 
+    public int PDamge = 10;
+
     private Vector3 moveDirection = Vector3.zero; // 이동 방향
 
     private CharacterController controller; // 캐릭터 컨트롤러 컴포넌트

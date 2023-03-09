@@ -15,40 +15,28 @@ public class EnemyHealth : MonoBehaviour
     public bool dead = false;
     float Speed;
 
+    EnemyAi EAi;
+
     public void Start()
     {
+        EAi = GameObject.Find("MovementAi").GetComponent<EnemyAi>();
         Hpslider.maxValue = CurrentHp;
+        Hpslider.value = CurrentHp;
     }
-
+    //데미지 받아오기 
     public void TakeDamage(int amount)
     {
         CurrentHp -= amount;
-        healthChange();
-
-    }
-    void healthChange()
-    {
         Hpslider.value = CurrentHp;
+
     }
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            Debug.Log("공격받음");
-            CurrentHp -= 1;
-        }
-        Hpslider.value = CurrentHp;
+        //죽었는지 확인
         if (CurrentHp <= 0 && !dead)
         {
-            Die();
+            EAi.Die();
         }
-    }
-
-    void Die()
-    {
-        dead = true;
-        print("Enemy Died");
-        Destroy(enemy, 0.5f);
     }
 }
