@@ -56,7 +56,7 @@ public class EnemyAi : MonoBehaviour
         Pl = GameObject.Find("Player").GetComponent<Player>();
         EH = GameObject.Find("MovementAi").GetComponent<EnemyHealth>();
         agent = GetComponent<NavMeshAgent>();
-        // seedspawn = GameObject.Find("seedspawnerobject").GetComponent<seedspawner>();
+        //seedspawn = GameObject.Find("seedspawnerobject").GetComponent<seedspawner>();
         enemy1.Shield = 10;
         enemy1.AttackDamge = 30;
         enemy1.Hp = 100;

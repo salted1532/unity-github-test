@@ -12,7 +12,7 @@ public class ChargePoint : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        chargeai = GameObject.Find("chargeai").GetComponent<ChargeAi>();
+        chargeai = GameObject.Find("Chargeai").GetComponent<ChargeAi>();
     }
 
     // Update is called once per frame
