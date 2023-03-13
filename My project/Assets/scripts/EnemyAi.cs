@@ -10,11 +10,9 @@ public class EnemyAi : MonoBehaviour
 {
     public NavMeshAgent agent;
     public Transform player;
-    public LayerMask whatIsGround, whatIsPlayer;
+    public LayerMask whatIsPlayer;
     public Transform centrePoint;
 
-    public Vector3 walkPoint;
-    bool walkPointSet;
     public float walkPointRange;
 
     public float timeBetweenAttacks;
@@ -54,7 +52,7 @@ public class EnemyAi : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         Pl = GameObject.Find("Player").GetComponent<Player>();
-        EH = GameObject.Find("MovementAi").GetComponent<EnemyHealth>();
+        EH = GetComponent<EnemyHealth>();
         agent = GetComponent<NavMeshAgent>();
         //seedspawn = GameObject.Find("seedspawnerobject").GetComponent<seedspawner>();
         enemy1.Shield = 10;
@@ -80,27 +78,18 @@ public class EnemyAi : MonoBehaviour
         {
             AttackPlayer();
         }
-        healthdelay -= Time.deltaTime;
-        if(healthdelay <= 0)
-        {
-            healthdelay = 0.1f;
-        }
         if (GetAttack == true)
         {
-            healthdelay -= Time.deltaTime;
-            if (healthdelay <= 0)
+            GetAttack = false;
+            EH.TakeDamage(Pl.PDamge);
+            healthdelay = 2;
+            Debug.Log("Á×À½");
+            var heading = centrePoint.position - player.position;
+            float backing = 0;
+            while (backing < 5f)
             {
-                GetAttack = false;
-                EH.TakeDamage(Pl.PDamge);
-                healthdelay = 2;
-                Debug.Log("Á×À½");
-                var heading = centrePoint.position - player.position;
-                float backing = 0;
-                while (backing < 5f)
-                {
-                    transform.Translate(Vector3.back * 0.5f * Time.deltaTime);
-                    backing += Time.deltaTime;
-                }
+                transform.Translate(Vector3.back * 0.5f * Time.deltaTime);
+                backing += Time.deltaTime;
             }
         }
     }
@@ -167,7 +156,6 @@ public class EnemyAi : MonoBehaviour
     }
     public  void Die()
     {
-        Destroy(gameObject);
         seedspawn.enemyrate -= 1;
     }
 

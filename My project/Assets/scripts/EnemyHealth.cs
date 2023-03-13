@@ -19,7 +19,7 @@ public class EnemyHealth : MonoBehaviour
 
     public void Start()
     {
-        EAi = GameObject.Find("MovementAi").GetComponent<EnemyAi>();
+        EAi = GetComponent<EnemyAi>();
         Hpslider.maxValue = CurrentHp;
         Hpslider.value = CurrentHp;
     }
@@ -37,6 +37,7 @@ public class EnemyHealth : MonoBehaviour
         if (CurrentHp <= 0 && !dead)
         {
             EAi.Die();
+            Destroy(enemy);
         }
     }
 }

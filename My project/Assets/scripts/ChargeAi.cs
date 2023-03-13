@@ -100,7 +100,6 @@ public class ChargeAi : MonoBehaviour
         {
             Invoke(nameof(ResetCharge), timeBetweenAttacks);
         }
-
     }
     private void ResetCharge()
     {
