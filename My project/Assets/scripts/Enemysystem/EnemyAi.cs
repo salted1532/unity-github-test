@@ -49,10 +49,7 @@ public class EnemyAi : MonoBehaviour
 
     private void Update()
     {
-        if(rb.velocity.magnitude > 25f)
-        {
-            rb.velocity = Vector3.zero;
-        }
+        rb.velocity = Vector3.zero;
         //플레이어 관측하고 공격하기
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
@@ -89,7 +86,6 @@ public class EnemyAi : MonoBehaviour
     {
         if (agent.remainingDistance <= agent.stoppingDistance)//목적지 도착 확인
         {
-            rb.velocity = Vector3.zero;
             waitTimer -= Time.deltaTime;
             if (waitTimer <= 0)
             {
