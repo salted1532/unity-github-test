@@ -25,14 +25,11 @@ public class EnemyAi : MonoBehaviour
     public bool GetAttack = false;
     public float healthdelay;
 
-    Enemy enemy1 = new Enemy();
-    Enemy enemy2 = new Enemy();
-    Enemy enemy3 = new Enemy();
-
     seedspawner seedspawn;
     EnemyHealth EH;
     Player Pl;
     Rigidbody rb;
+    public EnemySAO E_data;
 
     private void Awake()
     {
@@ -42,9 +39,6 @@ public class EnemyAi : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
         seedspawn = GameObject.Find("SeedSpawner").GetComponent<seedspawner>();
-        enemy1.Shield = 10;
-        enemy1.AttackDamge = 30;
-        enemy1.Hp = 100;
     }
 
     private void Update()
@@ -65,20 +59,6 @@ public class EnemyAi : MonoBehaviour
         if (playerInSightRange && playerInAttackRange)
         {
             AttackPlayer();
-        }
-        if (GetAttack == true)
-        {
-            GetAttack = false;
-            EH.TakeDamage(Pl.PDamge);
-            healthdelay = 2;
-            Debug.Log("죽음");
-            var heading = centrePoint.position - player.position;
-            float backing = 0;
-            while (backing < 5f)
-            {
-                transform.Translate(Vector3.back * 0.5f * Time.deltaTime);
-                backing += Time.deltaTime;
-            }
         }
     }
 
@@ -145,19 +125,20 @@ public class EnemyAi : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GetAttack = true;
+            var heading = centrePoint.position - player.position;
+            float backing = 0;
+            while (backing < 5f)
+            {
+                transform.Translate(Vector3.back * 0.5f * Time.deltaTime);
+                backing += Time.deltaTime;
+            }
+            EH.TakeDamage(Pl.PDamge);
+            Debug.Log("데미지 받음");
         }
     }
     public  void Die()
     {
+        Destroy(gameObject);
         seedspawn.enemyrate -= 1;
     }
-
-}
-
-public class Enemy
-{
-    public int Shield;
-    public int AttackDamge;
-    public int Hp;
 }

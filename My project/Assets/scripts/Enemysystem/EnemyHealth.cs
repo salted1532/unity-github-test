@@ -16,6 +16,7 @@ public class EnemyHealth : MonoBehaviour
     float Speed;
 
     EnemyAi EAi;
+    public EnemySAO E_data;
 
     public void Start()
     {
@@ -26,7 +27,12 @@ public class EnemyHealth : MonoBehaviour
     //데미지 받아오기 
     public void TakeDamage(int amount)
     {
-        CurrentHp -= amount;
+        int TDamage = 0;
+        TDamage = amount - E_data.Shiled;
+        if(TDamage > 0)
+        {
+            CurrentHp -= TDamage;
+        }
         Hpslider.value = CurrentHp;
 
     }
@@ -37,7 +43,6 @@ public class EnemyHealth : MonoBehaviour
         if (CurrentHp <= 0 && !dead)
         {
             EAi.Die();
-            Destroy(enemy);
         }
     }
 }

@@ -168,6 +168,7 @@ MonoBehaviour:
   playerInAttackRange: 0
   GetAttack: 0
   healthdelay: 0
+  E_data: {fileID: 0}
 --- !u!114 &7392037731839170293
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,6 +187,7 @@ MonoBehaviour:
   Hpslider: {fileID: 7392037733513849039}
   anim: {fileID: 0}
   dead: 0
+  E_data: {fileID: 11400000, guid: 600a78d41a679db4d8c1ab61734f8800, type: 2}
 --- !u!1 &7392037732212918805
 GameObject:
   m_ObjectHideFlags: 0

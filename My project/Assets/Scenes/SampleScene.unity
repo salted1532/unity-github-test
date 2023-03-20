@@ -524,6 +524,7 @@ MonoBehaviour:
   Hpslider: {fileID: 1609870123}
   anim: {fileID: 0}
   dead: 0
+  E_data: {fileID: 0}
 --- !u!1 &370590251
 GameObject:
   m_ObjectHideFlags: 0
@@ -1397,6 +1398,7 @@ MonoBehaviour:
   Hpslider: {fileID: 1292031258}
   anim: {fileID: 0}
   dead: 0
+  E_data: {fileID: 0}
 --- !u!114 &748457778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1425,6 +1427,7 @@ MonoBehaviour:
   playerInAttackRange: 0
   GetAttack: 0
   healthdelay: 0.1
+  E_data: {fileID: 0}
 --- !u!1 &862254028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1511,6 +1514,9 @@ MonoBehaviour:
   waverate: 0
   enemyrate: 0
   wavedelay: 30
+  E_data1: {fileID: 11400000, guid: c530f498b2b57764e993b35779e56898, type: 2}
+  E_data2: {fileID: 11400000, guid: 171b839ddffcbf944bf10057cb46a949, type: 2}
+  E_data3: {fileID: 11400000, guid: 600a78d41a679db4d8c1ab61734f8800, type: 2}
 --- !u!4 &898763179
 Transform:
   m_ObjectHideFlags: 0
@@ -3778,7 +3784,7 @@ MonoBehaviour:
   moveSpeed: 12
   jumpSpeed: 8
   gravity: 20
-  PDamge: 10
+  PDamge: 30
   Health: 0
 --- !u!143 &1884127310
 CharacterController:
