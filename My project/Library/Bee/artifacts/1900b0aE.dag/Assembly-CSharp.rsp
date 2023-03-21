@@ -349,6 +349,7 @@
 "Assets/scripts/Ais/ChargeAi.cs"
 "Assets/scripts/Ais/ChargePoint.cs"
 "Assets/scripts/Ais/sword.cs"
+"Assets/scripts/attackpoint.cs"
 "Assets/scripts/Enemysystem/EnemyAi.cs"
 "Assets/scripts/Enemysystem/EnemyHealth.cs"
 "Assets/scripts/Enemysystem/Player.cs"
@@ -357,6 +358,7 @@
 "Assets/scripts/NotUse/RandomSpawner.cs"
 "Assets/scripts/NotUse/wavespawner.cs"
 "Assets/scripts/Scriptableobject/EnemySAO.cs"
+"Assets/scripts/tunnelAi.cs"
 -langversion:9.0
 
 /deterministic
