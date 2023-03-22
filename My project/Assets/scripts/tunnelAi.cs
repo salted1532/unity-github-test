@@ -9,6 +9,7 @@ public class tunnelAi : MonoBehaviour
     public Transform player;
     public LayerMask whatIsPlayer;
     public Transform centrePoint;
+    public Vector3 OnGroundpoint;
 
     public float walkPointRange;
 
@@ -32,6 +33,7 @@ public class tunnelAi : MonoBehaviour
     {
         player = GameObject.Find("Player").transform;
         Pl = GameObject.Find("Player").GetComponent<Player>();
+
         EH = GetComponent<EnemyHealth>();
         rb = GetComponent<Rigidbody>();
         agent = GetComponent<NavMeshAgent>();
@@ -110,8 +112,14 @@ public class tunnelAi : MonoBehaviour
             //공격 모션
             Rigidbody rb = Instantiate(attackpoint, player.transform.position, Quaternion.identity).GetComponent<Rigidbody>();
             alreadyAttacked = true;
+            agent.Warp(new Vector3(-40,1,0));
+            Invoke(nameof(OnGround), 3f);
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
+    }
+    private void OnGround()
+    {
+        agent.Warp(OnGroundpoint);
     }
     private void ResetAttack()
     {

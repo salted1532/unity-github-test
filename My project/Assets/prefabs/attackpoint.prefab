@@ -110,5 +110,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 573c16ecd389394408397a99cce2a1ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myObject: {fileID: 4936315127408179765}
+  myObject: {fileID: 7656294885312646660}
   onofftimer: 0.5
+  deltimer: 3

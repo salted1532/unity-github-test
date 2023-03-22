@@ -1176,6 +1176,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   centrePoint: {fileID: 477809274}
+  OnGroundpoint: {x: 0, y: 0, z: 0}
   walkPointRange: 5
   timeBetweenAttacks: 5
   attackpoint: {fileID: 4936315127408179765, guid: d118bcf19c2e18b44a0fd1f5665a40d2, type: 3}
