@@ -23,12 +23,7 @@ public class attackpoint : MonoBehaviour
     void Update()
     {
         Invoke(nameof(objectonoff), onofftimer);
-        deltimer -= Time.deltaTime;
-        if (deltimer <= 0)
-        {
-            del();
-            deltimer = 3;
-        }
+        Invoke(nameof(del), deltimer);
     }
 
     void objectonoff()
