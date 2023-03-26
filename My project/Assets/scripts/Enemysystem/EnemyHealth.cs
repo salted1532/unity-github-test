@@ -16,11 +16,13 @@ public class EnemyHealth : MonoBehaviour
     float Speed;
 
     EnemyAi EAi;
+    tunnelAi TAi;
     public EnemySAO E_data;
 
     public void Start()
     {
         EAi = GetComponent<EnemyAi>();
+        TAi = GetComponent<tunnelAi>();
         Hpslider.maxValue = CurrentHp;
         Hpslider.value = CurrentHp;
     }
@@ -42,6 +44,7 @@ public class EnemyHealth : MonoBehaviour
         //죽었는지 확인
         if (CurrentHp <= 0 && !dead)
         {
+            TAi.Die();
             EAi.Die();
         }
     }
